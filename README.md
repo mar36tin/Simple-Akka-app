@@ -1,5 +1,5 @@
 # Simple-Akka-app
-Simple akka app
+Simple Scala akka app
 
 
 A simple app with 1 actor that just prints out a message.
