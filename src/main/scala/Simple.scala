@@ -1,19 +1,22 @@
-import java.util.concurrent.TimeUnit
-
 import akka.actor.{Props, ActorSystem}
 
 object Simple extends App {
 
-  import akka.util.Timeout
 
-  //ActorSystem is a heavy object so its recommended to create only 1 per application
+  /**
+    * ActorSystem is a heavy object so its recommended to create only 1 per application
+    */
   val system = ActorSystem("system")
 
-  //
+  /**
+    * ActorRef provides reference to the actor
+    * Props is a configuration class used to set options for the Actor
+    */
   val simpleActor = system.actorOf(Props[SimpleActor], "simpleActor")
 
-  implicit val timeout = Timeout(25, TimeUnit.SECONDS)
-
+  /**
+    * tell ! ensures that the messages are non-blocking
+    */
   simpleActor ! SimpleMessage("Star wars is out")
 
 }
